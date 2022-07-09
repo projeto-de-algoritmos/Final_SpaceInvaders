@@ -33,7 +33,7 @@ public class Powerup : MonoBehaviour
                 }
                 else if (powerupID == 2) 
                 {
-                    //player.ShieldsPowerupOn();
+                    player.ShieldsPowerupOn();
                 }
                 
             }

@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     // public variables
     public bool canTripleShot = false;
     public bool canSpeedBoost = false;
+    public bool shieldsActive = false;
+    public int life = 3;
 
     // private variables
     [SerializeField]
@@ -16,8 +18,12 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject _tripleShotPrefab;
     [SerializeField]
+    private GameObject _explosionPrefab;
+    [SerializeField]
+    private GameObject _shieldGameObject;
+    [SerializeField]
     private float _fireRate = 0.25f;
-    private float canFire = 0.0f;
+    private float _canFire = 0.0f;
     private float _speed = 5.0f;
 
     private void Start()
@@ -34,19 +40,36 @@ public class Player : MonoBehaviour
             Shoot();
         }
     }
-       
+
+    public void Damage() 
+    {
+        if(shieldsActive == true)
+        {
+            shieldsActive = false;
+            _shieldGameObject.SetActive(false);
+        }
+        else {
+            life = life-1;
+            if (life <= 0) 
+            {
+                Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
+                Destroy(this.gameObject);
+            }
+        }
+    }
+
 
     private void Shoot() 
     {   
-        if (Time.time > canFire) {
+        if (Time.time > _canFire) {
             if (canTripleShot == true) 
             {
                 Instantiate(_tripleShotPrefab, transform.position, Quaternion.identity);
-                canFire = Time.time + _fireRate;
+                _canFire = Time.time + _fireRate;
             } 
             else if (canTripleShot == false) {
                 Instantiate(_laserPrefab, transform.position + new Vector3(0, 0.88f, 0), Quaternion.identity);
-                canFire = Time.time + _fireRate;
+                _canFire = Time.time + _fireRate;
             }            
         }     
     }
@@ -86,6 +109,13 @@ public class Player : MonoBehaviour
         }        
     }
 
+
+    public void ShieldsPowerupOn()
+    {
+        shieldsActive = true;
+        _shieldGameObject.SetActive(true);
+    }
+
     public void TripleShotPowerupOn()
     {
         canTripleShot = true;
@@ -98,12 +128,6 @@ public class Player : MonoBehaviour
         StartCoroutine(SpeedBoostShutDownRoutine());
     }
 
-    public IEnumerator SpeedBoostShutDownRoutine()
-    {
-        yield return new WaitForSeconds(7.0f);
-
-        canSpeedBoost = false;
-    }
 
     public IEnumerator TripleShotShutDownRoutine()   
     {
@@ -111,5 +135,12 @@ public class Player : MonoBehaviour
 
         canTripleShot = false;
     }
+    public IEnumerator SpeedBoostShutDownRoutine()
+    {
+        yield return new WaitForSeconds(7.0f);
+
+        canSpeedBoost = false;
+    }
+
 
 }
