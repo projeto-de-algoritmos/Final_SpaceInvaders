@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
     private GameObject _explosionPrefab;
     [SerializeField]
     private GameObject _shieldGameObject;
+    [SerializeField]
+    private GameObject[] _engines;
 
     private UIManager _uiManager;
     private GameManager _gameManager;
@@ -30,6 +32,7 @@ public class Player : MonoBehaviour
     private float _fireRate = 0.25f;
     private float _canFire = 0.0f;
     private float _speed = 5.0f;
+    private int hitCount = 0;
 
     private void Start()
     {
@@ -51,7 +54,7 @@ public class Player : MonoBehaviour
         }
 
         _audioSource = GetComponent<AudioSource>();
-    
+        hitCount = 0;
     }
 
     private void Update()
@@ -72,6 +75,17 @@ public class Player : MonoBehaviour
             _shieldGameObject.SetActive(false);
         }
         else {
+            hitCount++;
+
+            if(hitCount == 1) 
+            {
+                _engines[0].SetActive(true);
+            }
+            else if (hitCount == 2) 
+            {
+                _engines[1].SetActive(true);
+            }
+            
             life = life-1;
             _uiManager.UpdateLives(life);
             if (life <= 0) 

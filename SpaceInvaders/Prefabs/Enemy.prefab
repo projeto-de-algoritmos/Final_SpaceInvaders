@@ -147,4 +147,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 5
   _enemyExplosionPrefab: {fileID: 1730495841524378484, guid: 184bc5263763b934bbdbea2efaed1ca7, type: 3}
-  _uiManager: {fileID: 0}
+  _clip: {fileID: 8300000, guid: a885c043fab7e46438bba03ba9dab6bc, type: 3}
