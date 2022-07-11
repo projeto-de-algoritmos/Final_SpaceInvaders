@@ -21,7 +21,12 @@ public class Player : MonoBehaviour
     private GameObject _explosionPrefab;
     [SerializeField]
     private GameObject _shieldGameObject;
-    [SerializeField]
+
+    private UIManager _uiManager;
+    private GameManager _gameManager;
+    private SpawnManager _spawnManager;
+    private AudioSource _audioSource;
+
     private float _fireRate = 0.25f;
     private float _canFire = 0.0f;
     private float _speed = 5.0f;
@@ -29,6 +34,24 @@ public class Player : MonoBehaviour
     private void Start()
     {
         transform.position = new Vector3(0, 0, 0);
+
+        _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
+        
+        if(_uiManager != null) 
+        {
+            _uiManager.UpdateLives(life);
+        }
+
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        _spawnManager = GameObject.Find("Spawn Manager").GetComponent<SpawnManager>();
+
+        if(_spawnManager != null) 
+        {
+            _spawnManager.StartSpawnRoutines();
+        }
+
+        _audioSource = GetComponent<AudioSource>();
+    
     }
 
     private void Update()
@@ -50,9 +73,12 @@ public class Player : MonoBehaviour
         }
         else {
             life = life-1;
+            _uiManager.UpdateLives(life);
             if (life <= 0) 
             {
                 Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
+                _gameManager.gameOver = true;
+                _uiManager.ShowTitleScreen();
                 Destroy(this.gameObject);
             }
         }
@@ -62,6 +88,7 @@ public class Player : MonoBehaviour
     private void Shoot() 
     {   
         if (Time.time > _canFire) {
+            _audioSource.Play();
             if (canTripleShot == true) 
             {
                 Instantiate(_tripleShotPrefab, transform.position, Quaternion.identity);

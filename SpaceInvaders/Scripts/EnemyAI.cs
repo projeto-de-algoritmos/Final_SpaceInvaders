@@ -6,13 +6,14 @@ public class EnemyAI : MonoBehaviour
 {
     [SerializeField]
     private float _speed = 5.0f;
-
     [SerializeField]
     private GameObject _enemyExplosionPrefab;
+    [SerializeField]
+    private UIManager _uiManager;
 
     private void Start()
     {
-        
+        _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
     }
 
 
@@ -42,6 +43,7 @@ public class EnemyAI : MonoBehaviour
             }
             Instantiate(_enemyExplosionPrefab, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
+            _uiManager.UpdateScore();
             Destroy(other.gameObject);
         }
 
