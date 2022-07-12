@@ -1,7 +1,5 @@
 # Space Invaders 2.0
 
-**Conteúdo da Disciplina**: Grafos 2<br>
-
 ## Alunos
 
 | Matrícula | Aluno                               |
