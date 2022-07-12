@@ -13,22 +13,34 @@ Space Invaders foi um dos primeiros jogos de tiro com gráfico bidimensional (19
 
 ## Screenshots
 **Main Menu:**
-![Main_menu](https://user-images.githubusercontent.com/69814362/178398878-1a9ba3d5-f157-438b-83e7-0a0830a49f29.png)
+<p align="center">
+    <img src= 'https://user-images.githubusercontent.com/69814362/178398878-1a9ba3d5-f157-438b-83e7-0a0830a49f29.png'>
+</p>
 
 **Inimigos:**
-![Enemies](https://user-images.githubusercontent.com/69814362/178399972-25b0fc34-2c3b-4760-860f-f4bf4016f317.png)
+<p align="center">
+    <img src= 'https://user-images.githubusercontent.com/69814362/178399972-25b0fc34-2c3b-4760-860f-f4bf4016f317.png'>
+</p>
 
 **Sistema de poderes (power ups):**
-![Powerup system](https://user-images.githubusercontent.com/69814362/178399977-23b753b7-7258-4ce5-b3d7-49a509e84d69.png)
+<p align="center">
+    <img src= 'https://user-images.githubusercontent.com/69814362/178399977-23b753b7-7258-4ce5-b3d7-49a509e84d69.png'>
+</p>
 
 **Animação de falha no motor ao perder vida:**
-![Engine_failure](https://user-images.githubusercontent.com/69814362/178399963-7895c496-a36f-417b-affd-727862642a60.png)
+<p align="center">
+    <img src= 'https://user-images.githubusercontent.com/69814362/178399963-7895c496-a36f-417b-affd-727862642a60.png'>
+</p>
 
 **Animação de tiro triplo e escudo:**
-![Triple_shot_and_shields](https://user-images.githubusercontent.com/69814362/178399975-8d0b8b47-fd97-41f3-b418-19ffea3317b6.png)
+<p align="center">
+    <img src= 'https://user-images.githubusercontent.com/69814362/178399975-8d0b8b47-fd97-41f3-b418-19ffea3317b6.png'>
+</p>
 
 **Sistema de pontuação (score):**
-![Score](https://user-images.githubusercontent.com/69814362/178400681-5f9cf9fc-db78-464b-8507-98faebc00764.png)
+<p align="center">
+    <img src= 'https://user-images.githubusercontent.com/69814362/178400681-5f9cf9fc-db78-464b-8507-98faebc00764.png'>
+</p>
 
 
 ## Instalação
